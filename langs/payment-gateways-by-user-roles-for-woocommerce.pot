@@ -1,0 +1,88 @@
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:24
+msgid "General"
+msgstr ""
+
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:36
+msgid "Guest"
+msgstr ""
+
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:54
+msgid "Payment Gateways by User Roles Options"
+msgstr ""
+
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:59
+#: includes/settings/class-alg-wc-settings-payment-gateways-by-user-roles.php:24
+msgid "Payment Gateways by User Roles"
+msgstr ""
+
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:60
+msgid "Enable plugin"
+msgstr ""
+
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:61
+msgid ""
+"Set user roles to include/exclude for WooCommerce payment gateways to show "
+"up."
+msgstr ""
+
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:67
+msgid "Check user roles"
+msgstr ""
+
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:73
+msgid "All roles"
+msgstr ""
+
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:74
+msgid "First role only"
+msgstr ""
+
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:98
+msgid "Include user roles"
+msgstr ""
+
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:99
+msgid "Payment gateway will be available ONLY to selected roles."
+msgstr ""
+
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:100
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:114
+msgid "If set empty - option is ignored."
+msgstr ""
+
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:107
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:121
+msgid "Select user roles..."
+msgstr ""
+
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:112
+msgid "Exclude user roles"
+msgstr ""
+
+#: includes/settings/class-alg-wc-payment-gateways-by-user-roles-settings-general.php:113
+msgid "Payment gateway will be NOT available to selected roles."
+msgstr ""
+
+#: includes/settings/class-alg-wc-settings-payment-gateways-by-user-roles.php:38
+msgid "Reset Settings"
+msgstr ""
+
+#: includes/settings/class-alg-wc-settings-payment-gateways-by-user-roles.php:43
+msgid "Reset section settings"
+msgstr ""
+
+#: includes/settings/class-alg-wc-settings-payment-gateways-by-user-roles.php:44
+msgid "Reset"
+msgstr ""
+
+#: includes/settings/class-alg-wc-settings-payment-gateways-by-user-roles.php:83
+msgid "Your settings have been reset."
+msgstr ""
+
+#: payment-gateways-by-user-roles-for-woocommerce.php:148
+msgid "Settings"
+msgstr ""
+
+#: payment-gateways-by-user-roles-for-woocommerce.php:151
+msgid "Unlock All"
+msgstr ""
