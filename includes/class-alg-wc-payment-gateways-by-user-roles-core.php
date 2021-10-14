@@ -4,7 +4,7 @@
  *
  * @version 1.2.0
  * @since   1.0.0
- * @author  Tyche Softwares
+ * @author  Imaginate Solutions
  * @package pgur
  */
 
@@ -88,18 +88,20 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles_Core' ) ) :
 		 * @since   1.0.0
 		 */
 		public function available_payment_gateways( $_available_gateways ) {
-			$is_single_role = ( 'first' === get_option( 'alg_wc_payment_gateways_by_user_roles_check_roles', 'all' ) );
-			$customer_roles = $this->get_current_user_roles( $is_single_role );
-			foreach ( $_available_gateways as $key => $gateway ) {
-				$include_roles = get_option( 'alg_wc_gateway_roles_in_' . $key, '' );
-				if ( ! empty( $include_roles ) && ! $this->check_user_roles( $customer_roles, $include_roles, $is_single_role ) ) {
-					unset( $_available_gateways[ $key ] );
-					continue;
-				}
-				$exclude_roles = get_option( 'alg_wc_gateway_roles_ex_' . $key, '' );
-				if ( ! empty( $exclude_roles ) && $this->check_user_roles( $customer_roles, $exclude_roles, $is_single_role ) ) {
-					unset( $_available_gateways[ $key ] );
-					continue;
+			if ( is_array( $_available_gateways ) ) {
+				$is_single_role = ( 'first' === get_option( 'alg_wc_payment_gateways_by_user_roles_check_roles', 'all' ) );
+				$customer_roles = $this->get_current_user_roles( $is_single_role );
+				foreach ( $_available_gateways as $key => $gateway ) {
+					$include_roles = get_option( 'alg_wc_gateway_roles_in_' . $key, '' );
+					if ( ! empty( $include_roles ) && ! $this->check_user_roles( $customer_roles, $include_roles, $is_single_role ) ) {
+						unset( $_available_gateways[ $key ] );
+						continue;
+					}
+					$exclude_roles = get_option( 'alg_wc_gateway_roles_ex_' . $key, '' );
+					if ( ! empty( $exclude_roles ) && $this->check_user_roles( $customer_roles, $exclude_roles, $is_single_role ) ) {
+						unset( $_available_gateways[ $key ] );
+						continue;
+					}
 				}
 			}
 			return $_available_gateways;

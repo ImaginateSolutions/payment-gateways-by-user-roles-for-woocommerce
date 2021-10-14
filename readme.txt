@@ -1,8 +1,8 @@
 === Payment Gateways by User Roles for WooCommerce ===
-Contributors: tychesoftwares, ashokrane, dhruvin
-Tags: woocommerce, payment gateway, user role, role based checkout
+Contributors: imagisol, dhruvin
+Tags: woocommerce, payment gateway, user role, role based checkout, role based gateways, role based payments, paypal, cod, bacs, cheque payments, custom user roles, stripe, rule based checkout
 Requires at least: 4.4
-Tested up to: 5.5
+Tested up to: 5.8
 Stable tag: trunk
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -13,12 +13,23 @@ Set user roles to include/exclude for WooCommerce payment gateways to show up.
 
 **Payment Gateways by User Roles for WooCommerce** plugin lets you set user roles for payment gateways to show up.
 
-For each payment gateway you have two options to choose from:
+For your WooCommerce store for each payment gateway you have two options to choose from:
 
 * Set **included user roles** - payment gateway will be available *only* to selected roles.
 * Set **excluded user roles** - payment gateway will be *not* available to selected roles.
 
+Payment Gateways by User Roles for WooCommerce supports **custom user roles** as well present on your WooCommerce store.
+
+You can also choose which user role must be considered for rule check - either the first assigned user role or all the roles assigned to the user.
+
 With this plugin you can set user roles for four standard WooCommerce payment gateways: Direct bank transfer, Check payments, Cash on delivery and PayPal. To set user roles for all other payment gateways you will need [Payment Gateways by User Roles for WooCommerce Pro](https://wpfactory.com/item/payment-gateways-by-user-roles-for-woocommerce/) plugin version.
+
+[Payment Gateways by User Roles for WooCommerce Pro](https://wpfactory.com/item/payment-gateways-by-user-roles-for-woocommerce/) supports almost all the payment gateways created for WooCommerce including Stripe for WooCommerce.
+
+> All I needed was some way to make sure **logged in users (just our admin staff) could take COD payments while Guest users (the general public) could only use credit cards for online payments**. This plugin does that very simply, it’s working perfectly, and I couldn’t be happier!
+>
+> **Perfectly Simple**
+> - [WebbyMom](https://wordpress.org/support/topic/perfectly-simple-24/)
 
 = Feedback =
 * We are open to your suggestions and feedback. Thank you for using or trying out one of our plugins!
@@ -30,7 +41,16 @@ With this plugin you can set user roles for four standard WooCommerce payment ga
 2. Activate the plugin through the "Plugins" menu in WordPress.
 3. Start by visiting plugin settings at "WooCommerce > Settings > Payment Gateways by User Roles".
 
+== Screenshots ==
+
+1. Select which user roles must be checked.
+2. Include or Exclude certain payment gateways for certain users.
+
 == Changelog ==
+
+= 1.2.4 - 14/10/2021 =
+* Fixed an issue where some times the gateway array would be set to empty string.
+* WC tested up to: 5.8
 
 = 1.2.3 - 29/08/2020 =
 * Dev - Made the code PHPCS compliant.
