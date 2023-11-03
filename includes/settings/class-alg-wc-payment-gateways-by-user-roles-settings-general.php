@@ -25,6 +25,10 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles_Settings_General' ) 
 		 * @version 1.0.0
 		 * @since   1.0.0
 		 */
+		/**
+		 * Description for payment gateway
+		 * @var string $desc
+		 */public $desc;
 		public function __construct() {
 			$this->id   = '';
 			$this->desc = __( 'General', 'payment-gateways-by-user-roles-for-woocommerce' );
