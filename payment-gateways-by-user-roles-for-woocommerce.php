@@ -118,6 +118,11 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles' ) ) :
 		 * @version 1.2.1
 		 * @since   1.0.0
 		 */
+		/**
+ 		* Core instance for frontend and admin.
+ 		* @var object $core
+ 		*/
+		 protected $core;
 		public function includes() {
 			// Core.
 			$this->core = require_once 'includes/class-alg-wc-payment-gateways-by-user-roles-core.php';
@@ -130,6 +135,8 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles' ) ) :
 		 * @since   1.1.0
 		 */
 		public function admin() {
+			//HPOS compatibilty
+			add_action( 'before_woocommerce_init', array( $this, 'wau_declare_hpos_compatibility' ) );
 			// Action links.
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
 			// Settings.
@@ -142,6 +149,13 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles' ) ) :
 				add_action( 'admin_init', array( $this, 'version_updated' ) );
 			}
 		}
+		//HPOS compatibilty
+		public function wau_declare_hpos_compatibility() {
+			if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+				
+		}
+	}
 
 		/**
 		 * Show action links on the plugin screen.
@@ -169,6 +183,11 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles' ) ) :
 		 * @version 1.1.0
 		 * @since   1.0.0
 		 */
+		/**
+		 * Seeting tab for wooCommerce setting.
+		 * @var string $settings
+		 */
+	          public $settings;
 		public function add_woocommerce_settings_tab( $settings ) {
 			$settings[] = require_once 'includes/settings/class-alg-wc-settings-payment-gateways-by-user-roles.php';
 			return $settings;
