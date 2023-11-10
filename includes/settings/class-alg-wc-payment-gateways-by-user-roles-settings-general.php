@@ -20,15 +20,17 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles_Settings_General' ) 
 	class Alg_WC_Payment_Gateways_By_User_Roles_Settings_General extends Alg_WC_Payment_Gateways_By_User_Roles_Settings_Section {
 
 		/**
+		 * Description for payment gateway
+		 * @var string $desc
+		 */
+		public $desc;
+
+		/**
 		 * Constructor.
 		 *
 		 * @version 1.0.0
 		 * @since   1.0.0
 		 */
-		/**
-		 * Description for payment gateway
-		 * @var string $desc
-		 */public $desc;
 		public function __construct() {
 			$this->id   = '';
 			$this->desc = __( 'General', 'payment-gateways-by-user-roles-for-woocommerce' );
@@ -111,7 +113,7 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles_Settings_General' ) 
 								'alg_wc_payment_gateways_by_user_roles_settings',
 								'<span style="background-color: #fafafa; padding: 10px;">' . sprintf(
 									'You will need %s plugin to set roles for "%s" gateway.',
-									'<a target="_blank" href="https://wpfactory.com/item/payment-gateways-by-user-roles-for-woocommerce/">' .
+									'<a target="_blank" href="https://imaginate-solutions.com/downloads/payment-gateways-by-user-roles-for-woocommerce/">' .
 										'Payment Gateways by User Roles for WooCommerce Pro' .
 									'</a>',
 									$gateway->title

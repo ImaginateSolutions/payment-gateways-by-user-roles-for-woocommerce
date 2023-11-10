@@ -20,6 +20,12 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles_Settings_Section' ) 
 	class Alg_WC_Payment_Gateways_By_User_Roles_Settings_Section {
 
 		/**
+		 * section id
+		 * @var int $id
+		 */
+		public $id;
+
+		/**
 		 * Constructor.
 		 *
 		 * @version 1.1.0
@@ -38,11 +44,6 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles_Settings_Section' ) 
 		 * @version 1.0.0
 		 * @since   1.0.0
 		 */
-		/**
-		 * section id
-		 * @var int $id
-		 */
-		public $id;
 		public function settings_section( $sections ) {
 			$sections[ $this->id ] = $this->desc;
 			return $sections;
