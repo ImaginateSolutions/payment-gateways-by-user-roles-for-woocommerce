@@ -24,7 +24,6 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles_Settings_General' ) 
 		 * @var string $desc
 		 */
 		public $desc;
-
 		/**
 		 * Constructor.
 		 *

@@ -20,12 +20,6 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles_Settings_Section' ) 
 	class Alg_WC_Payment_Gateways_By_User_Roles_Settings_Section {
 
 		/**
-		 * section id
-		 * @var int $id
-		 */
-		public $id;
-
-		/**
 		 * Constructor.
 		 *
 		 * @version 1.1.0
@@ -35,7 +29,11 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles_Settings_Section' ) 
 			add_filter( 'woocommerce_get_sections_alg_wc_payment_gateways_by_user_roles', array( $this, 'settings_section' ) );
 			add_filter( 'woocommerce_get_settings_alg_wc_payment_gateways_by_user_roles_' . $this->id, array( $this, 'get_settings' ), PHP_INT_MAX );
 		}
-
+		/**
+		 * section id
+		 * @var int $id
+		 */
+		public $id;
 		/**
 		 * Settings section.
 		 *
