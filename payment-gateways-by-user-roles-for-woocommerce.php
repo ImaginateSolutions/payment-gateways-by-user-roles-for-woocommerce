@@ -150,7 +150,11 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles' ) ) :
 				add_action( 'admin_init', array( $this, 'version_updated' ) );
 			}
 		}
-		//HPOS compatibilty
+		/**
+		 * Declare HPOS Compatible
+		 *
+		 * @return void
+		 */
 		public function wau_declare_hpos_compatibility() {
 			if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
 				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
