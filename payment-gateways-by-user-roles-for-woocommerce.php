@@ -42,11 +42,17 @@ if ( 'payment-gateways-by-user-roles-for-woocommerce.php' === basename( __FILE__
 	}
 }
 
-register_activation_hook( __FILE__, function() {
+/**
+ * Handles plugin activation: sets install time for the admin review notice logic.
+ *
+ * @since 1.0.0
+ */
+function pgur_handle_plugin_activation() {
 	if ( ! get_option( 'pgur_install_time' ) ) {
 		update_option( 'pgur_install_time', time() );
 	}
-});
+}
+register_activation_hook( __FILE__, 'pgur_handle_plugin_activation' );
 
 if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles' ) ) :
 
