@@ -42,6 +42,12 @@ if ( 'payment-gateways-by-user-roles-for-woocommerce.php' === basename( __FILE__
 	}
 }
 
+register_activation_hook( __FILE__, function() {
+	if ( ! get_option( 'pgur_install_time' ) ) {
+		update_option( 'pgur_install_time', time() );
+	}
+});
+
 if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles' ) ) :
 
 	/**
@@ -155,6 +161,10 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles' ) ) :
 			if ( get_option( 'alg_wc_payment_gateways_by_user_roles_version', '' ) !== $this->version ) {
 				add_action( 'admin_init', array( $this, 'version_updated' ) );
 			}
+			// Show the review notice.
+			add_action( 'admin_notices', array( $this, 'show_review_notice' ) );
+			// Handle AJAX dismiss.
+			add_action( 'wp_ajax_pgur_dismiss_review_notice', array( $this, 'dismiss_review_notice' ) );
 		}
 
 		/**
@@ -229,6 +239,61 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_By_User_Roles' ) ) :
 		 */
 		public function plugin_path() {
 			return untrailingslashit( plugin_dir_path( __FILE__ ) );
+		}
+		/**
+		 * Show a dismissible admin review notice after a set time from activation.
+		 *
+		 * @version 1.4.0
+		 * @since   1.4.0
+		 * @return void
+		 */
+		public function show_review_notice() {
+			// Only admins.
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+			// Only if not dismissed.
+			if ( get_option( 'pgur_review_notice_dismissed' ) ) {
+				return;
+			}
+			// Only after 1 week (604800 seconds) from installation.
+			$install_time = get_option( 'pgur_install_time', 0 );
+			if ( ! $install_time || ( time() - intval( $install_time ) < 604800 ) ) { // 604800 = 1 week
+				return;
+			}
+			$nonce = wp_create_nonce( 'pgur_dismiss_notice' );
+			?>
+			<div class="notice notice-info is-dismissible pgur-review-notice">
+				<p>
+					🎉 <strong><?php esc_html_e( 'Thanks for using Payment Gateways by User Roles for WooCommerce!', 'payment-gateways-by-user-roles-for-woocommerce' ); ?></strong><br>
+					<?php esc_html_e( 'If our plugin helps your workflow, please consider', 'payment-gateways-by-user-roles-for-woocommerce' ); ?>
+					<a href="https://wordpress.org/support/plugin/payment-gateways-by-user-roles-for-woocommerce/reviews/?rate=5#new-post" target="_blank"><?php esc_html_e( 'leaving a 5-star review', 'payment-gateways-by-user-roles-for-woocommerce' ); ?></a> 💖
+				</p>
+			</div>
+			<script>
+			(function($){
+				$(document).on('click', '.pgur-review-notice .notice-dismiss', function(){
+					$.post(ajaxurl, {
+						action: 'pgur_dismiss_review_notice',
+						_nonce: '<?php echo esc_js( $nonce ); ?>'
+					});
+				});
+			})(jQuery);
+			</script>
+			<?php
+		}
+
+		/**
+		 * Handle AJAX request to dismiss the admin review notice.
+		 *
+		 * @version 1.4.0
+		 * @since   1.4.0
+		 * @return void
+		 */
+		public function dismiss_review_notice() {
+			check_ajax_referer( 'pgur_dismiss_notice', '_nonce' );
+			update_option( 'pgur_review_notice_dismissed', 1 );
+			wp_die();
 		}
 
 	}
